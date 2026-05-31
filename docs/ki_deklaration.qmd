@@ -1,0 +1,32 @@
+---
+title: "KI-Deklaration"
+author: "Team 04 - Fabian Egli, Salomon König und Silvan Herzig"
+date: "2026-05-31"
+format: html
+---
+
+## Verzeichnis der eingesetzten KI-Tools
+
+Anthropic. (2026). *Claude* (Versionen Opus 4.7, Sonnet 4.6).
+<https://claude.ai>
+
+- Code-Umsetzung des Streamlit-Dashboards
+- Hilfe bei der Erstellung von Texten (README, Präsentationsfolien)
+- Erstellung des Regressionsprogramms für die fehlenden Heizbedarfszahlen
+- Konsistenz-Prüfung über Projekt-Dokumente hinweg
+- Pushen einiger Dateien auf GitHub
+
+## Erklärung zur Nutzung generativer KI
+
+Bei der Erstellung dieses Visualisierungsprojekts wurde *Claude* (Anthropic) als
+KI-Assistenz eingesetzt. Die KI diente einerseits der technischen Umsetzung
+(Dashboard-Code, Regression für die Heizbedarf-Imputation) und andererseits der
+Texterstellung (README, Verbesserung der Präsentation, kleine Teile der
+Quarto-Dokumentation).
+
+Alle Resultate (Code, Texte, methodische Vorschläge) wurden vom Team geprüft,
+inhaltlich verstanden und gegebenenfalls angepasst. Die Ideen für die
+Gestaltung, Visualisierungen, Datenquellen und den roten Faden im Dashboard
+wurden vom Team selbst ohne KI erarbeitet. Die Umsetzung im Dashboard war
+häufig nicht ganz wie gewünscht, weshalb die Anweisungen anschliessend
+präzisiert und verbessert werden mussten.
