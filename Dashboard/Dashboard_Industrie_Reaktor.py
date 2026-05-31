@@ -591,6 +591,7 @@ if page == "Übersicht":
             height=520,
         )
         fig.update_layout(
+            xaxis=dict(title="Jahr"),
             yaxis=dict(title="Stromverbrauch (GWh)", color=ORANGE, fixedrange=True),
             yaxis2=dict(title="Bevölkerung (Mio.)", color=BLUE,
                         overlaying="y", side="right", gridcolor="rgba(0,0,0,0)",
@@ -656,7 +657,7 @@ elif page == "Verbrauch × Temperatur":
             yaxis="y2",
         ))
     fig.update_layout(
-        yaxis=dict(title="Stromverbrauch",  color=ORANGE, gridcolor=SURFACE_LINE,
+        yaxis=dict(title="Stromverbrauch (GWh)", color=ORANGE, gridcolor=SURFACE_LINE,
                    fixedrange=True),
         yaxis2=dict(title="Temperatur (°C)", color=BLUE,
                     overlaying="y", side="right", gridcolor="rgba(0,0,0,0)",
@@ -881,7 +882,7 @@ st.markdown(
     "<div style='text-align:center; font-family: Inter, sans-serif; "
     "color: #6b7280; font-size: 0.7rem; letter-spacing: 0.18em; "
     "text-transform: uppercase;'>"
-    "Strom Schweiz · VDSS FS26 · Gruppe 4 · Energie-Edition"
+    "Strom Schweiz · VDSS FS26 · Gruppe 4"
     "</div>",
     unsafe_allow_html=True,
 )
