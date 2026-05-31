@@ -1,7 +1,7 @@
 # Übersicht
 
 Diese Dokumentation beschreibt die Konzeption, Entwicklung und Evaluation
-des Visualisierungsprojekts **„Stromverbrauch Schweiz 1990–2025"**.
+des Visualisierungsprojekts **„Stromverbrauch Schweiz"**.
 Im Mittelpunkt steht die Frage, ob die Schweiz trotz Bevölkerungswachstum
 und wärmerer Winter tatsächlich effizienter geworden ist — beantwortet
 anhand öffentlich verfügbarer Daten von BFE, MeteoSchweiz und BFS.

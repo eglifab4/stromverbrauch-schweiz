@@ -7,7 +7,7 @@ language:
   section-title-appendices: "Anhang"
 
 website:
-  title: "Stromverbrauch Schweiz 1990–2025"
+  title: "Stromverbrauch Schweiz"
   search: true
   sidebar:
     style: "floating"

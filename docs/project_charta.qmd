@@ -1,11 +1,11 @@
 ---
-title: "Project Charta – Stromdashboard Schweiz"
+title: "Projektcharta – Stromverbrauch Schweiz"
 author: "Team 04 - Fabian Egli, Salomon König und Silvan Herzig"
 date: "2026-05-31"
 format: html
 ---
 
-# Project Charta
+# Projektcharta
 
 ## Kontext und Scope
 
@@ -16,26 +16,28 @@ Die visuelle Leitidee orientiert sich an einem **Kernkraftwerk‑Reaktor**:
 
 * **Reaktor‑Module** = Analyse‑Seiten  
 * **Orange‑Schwarz‑Palette** = Energie, Hitze, Warnsignal  
-* **Reaktor‑Status** = Kernkraftanteil im Datensatz  
+* **Reaktor‑Status** = Kernkraftanteil im Datensatz als Ampelfarbe
 * **Saisonfilter** = „Betriebsmodi“ des Reaktors  
 * **Trendlinien** = Energiefluss im Reaktor  
 
 Die betrachteten Variablen umfassen:
 
-* Jahr  
-* Monat  
-* Temperatur  
-* Stromerzeugung  
-* Stromverbrauch  
-* Bevölkerung  
+* Jahr
+* Monat
+* Temperatur
+* Heizbedarf
+* Stromerzeugung
+* Kernkraft-Erzeugung
+* Stromverbrauch
+* Stromverbrauch pro Kopf
+* Bevölkerung
 * Saison (Winter, Frühling, Sommer, Herbst)
 
 Zentrale Fragestellungen:
 
-* Wie verändert sich der Stromverbrauch im Jahresverlauf?  
-* Welche saisonalen Unterschiede sind stabil oder verändern sich?  
-* Wie entwickelt sich der Verbrauch im Verhältnis zur Bevölkerung?  
-* Welche Rolle spielen Temperatur und Jahreszeiten?
+* Wie entwickelt sich der Stromverbrauch im Verhältnis zur Bevölkerung?
+* Wie stark korreliert der Stromverbrauch mit den Witterungsbedingungen?
+* Sind wir trotz Bevölkerungswachstum und wärmerer Temperaturen tatsächlich effizienter geworden?
 
 Der Nutzen liegt in einer intuitiven, interaktiven und visuell starken Darstellung der Schweizer Stromentwicklung.
 
@@ -164,24 +166,27 @@ Der Nutzen liegt in einer intuitiven, interaktiven und visuell starken Darstellu
 
 Interaktives Dashboard im **Reaktor‑Design**:
 
-* **Reaktor 1 – Langfristanalyse**  
+* **Reaktor 1 – Übersicht**
 * **Reaktor 2 – Verbrauch × Temperatur**  
 * **Reaktor 3 – Korrelation**  
-* **Reaktor 4 – Effizienz / Heizen**  
+* **Reaktor 4 – Effizienz & Heizbedarf**
 
 ### Visual Encodings
 
-* Liniencharts für Trends  
-* Scatterplots für Zusammenhänge  
-* Balkendiagramme für saisonale Vergleiche  
-* Reaktor‑Statusanzeige (KKW‑Anteil)  
+* Liniencharts für Trends
+* Scatterplots für Zusammenhänge
+* Trendlinien zur Hervorhebung von Entwicklungen
+* Farbcodierung der Jahreszeiten (Winter/Frühling/Sommer/Herbst)
+* Era-Markierungen (Wachstum vs. Sättigung als farbige Flächen)
+* Reaktor‑Statusanzeige (KKW‑Anteil)
 
 ### Interactivity
 
-* Jahresfilter  
-* Saisonfilter (Winter, Frühling, Sommer, Herbst)  
-* Hover‑Informationen  
-* Vergleichsansichten  
+* Jahresfilter
+* Saisonfilter (Winter, Frühling, Sommer, Herbst)
+* Hover‑Informationen
+* Klickbare Legenden (einzelne Datenreihen ein-/ausblenden)
+* Era-Vergleich (Wachstum vs. Sättigung in Korrelation)
 
 ### Narrative and Annotation
 

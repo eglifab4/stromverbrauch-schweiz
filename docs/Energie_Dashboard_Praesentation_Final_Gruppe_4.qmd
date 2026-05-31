@@ -101,7 +101,7 @@ MeteoSchweiz — Heizgradtage, Monatswerte\
 
 ## **Bevölkerung**
 
-Bundesamt für Statistik (BFS) — Jahresbevölkerung Schweiz 1990–2025
+Bundesamt für Statistik (BFS) — Jahresbevölkerung Schweiz 1986–2024
 
 ## **Kernkraft**
 
@@ -113,7 +113,7 @@ BFE OGD35 — Schweizerische Elektrizitätsbilanz, Monatswerte (ab 2000)
 
 ## **Quantitativ**
 
--   4 Module im Dashboard (Übersicht, Verbrauch × Temperatur, Korrelation, Effizienz)\
+-   4 Module im Dashboard (Übersicht, Verbrauch × Temperatur, Korrelation, Effizienz & Heizbedarf)\
 -   Mehrere Interaktionen (Zeitbereich, Jahreszeiten-Filter, Hover, Legenden-Toggle)\
 -   Reproduzierbar via GitHub + dokumentiert in Quarto-Webseite
 
@@ -158,7 +158,7 @@ Quarto, GitHub, Struktur & Zusammenführung
 # Vielen Dank {.center}
 
 ::: {style="text-align: center;"}
-**Dashboard live:** <http://localhost:8501> (Demo zeigen)
+**Dashboard live:** <https://visualisation-projekt-gruppe-4.streamlit.app/>
 
 **Dokumentation:** <https://vdss-fs26-ds25a.github.io/Visualisation-Projekt-Gruppe-4/>
 

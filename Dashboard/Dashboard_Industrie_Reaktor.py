@@ -233,7 +233,12 @@ st.markdown("""
 def load_data():
     # Kopiere die Datei zuerst in einen temp-Ordner, damit ein Excel-Lock
     # (PermissionError unter Windows) umgangen wird.
-    src = os.path.join(os.path.dirname(__file__), "Data_Strom_korrigiert.xlsx")
+    # Datenquelle liegt in data_acquisition/Processed_Data/ (eine Ebene höher).
+    src = os.path.join(
+        os.path.dirname(__file__), "..",
+        "data_acquisition", "Processed_Data",
+        "Data_Strom_korrigiert.xlsx",
+    )
     tmp_dir = tempfile.mkdtemp()
     tmp_path = os.path.join(tmp_dir, "Data_Strom_korrigiert.xlsx")
     shutil.copy2(src, tmp_path)
@@ -373,7 +378,7 @@ with st.sidebar:
     st.markdown("### MODUL")
     page = st.selectbox(
         " ",
-        ["Übersicht", "Verbrauch × Temperatur", "Korrelation", "Effizienz / Heizen"],
+        ["Übersicht", "Verbrauch × Temperatur", "Korrelation", "Effizienz & Heizbedarf"],
         label_visibility="collapsed",
     )
 
@@ -667,7 +672,7 @@ elif page == "Verbrauch × Temperatur":
 elif page == "Korrelation":
     render_header(
         "▌ REAKTOR 3 · KORRELATION",
-        "Temperatur und Stromverbrauch",
+        "Korrelation zwischen Temperatur und Stromverbrauch",
         "Hat sich der Zusammenhang verschoben? Vergleich zweier Perioden: "
         "1990–2008 (Wachstumsphase) gegen 2009–2025 (Sättigung). "
         "Wenn die Wolke nach unten gewandert ist, brauchen wir bei gleicher "
@@ -771,7 +776,7 @@ elif page == "Korrelation":
 
 
 # ── PAGE: EFFIZIENZ / HEIZEN ──────────────────────────────────────────────────
-elif page == "Effizienz / Heizen":
+elif page == "Effizienz & Heizbedarf":
     render_header(
         "▌ REAKTOR 4 · WITTERUNGSBEREINIGT",
         "Effizienz & Heizbedarf",
@@ -807,6 +812,7 @@ elif page == "Effizienz / Heizen":
         g_saett    = g[g["Jahr"] >= 2009]
         eff_w      = g_wachstum["Effizienz"].mean() if len(g_wachstum) else float("nan")
         eff_s      = g_saett["Effizienz"].mean()    if len(g_saett)    else float("nan")
+        delta_pct  = (eff_s - eff_w) / eff_w * 100 if eff_w and not pd.isna(eff_w) else 0
         # Heizbedarf über ALLE Monate im Filter (inkl. Sommer mit Heizbedarf ≈ 0)
         heiz_avg   = df_filtered["Heizbedarf"].mean()
 
@@ -817,10 +823,18 @@ elif page == "Effizienz / Heizen":
                 f"{eff_w:.2f}" if not pd.isna(eff_w) else "—",
             )
         with c2:
-            st.metric(
-                "Effizienz (ab 2009)",
-                f"{eff_s:.2f}" if not pd.isna(eff_s) else "—",
-            )
+            if not pd.isna(eff_s) and not pd.isna(eff_w):
+                st.metric(
+                    "Effizienz (ab 2009)",
+                    f"{eff_s:.2f}",
+                    delta=f"{delta_pct:+.1f} %",
+                    delta_color="inverse",
+                )
+            else:
+                st.metric(
+                    "Effizienz (ab 2009)",
+                    f"{eff_s:.2f}" if not pd.isna(eff_s) else "—",
+                )
         with c3:
             st.metric("Ø Heizbedarf pro Monat", f"{heiz_avg:.2f}")
         st.markdown("")

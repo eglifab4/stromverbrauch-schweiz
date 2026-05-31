@@ -7,32 +7,35 @@ format: html
 
 # Visualization Design Report
 
-Dieser Bericht dokumentiert die visuellen Entscheidungen, Encodings und Interaktionsmechanismen des entwickelten Visualisierungsprodukts. Er übersetzt das Visualisierungskonzept aus der [Project Charta](project_charta.qmd) in konkrete Design-Spezifikationen und beschreibt die entstandenen Prototypen.
+Dieser Bericht dokumentiert die visuellen Entscheidungen, Encodings und Interaktionsmechanismen des entwickelten Visualisierungsprodukts. Er übersetzt das Visualisierungskonzept aus der [Projektcharta](project_charta.qmd) in konkrete Design-Spezifikationen und beschreibt die entstandenen Prototypen.
 
 Das Dashboard folgt einer **Reaktor‑Metapher**:  
 Orange steht für Energiefluss, Schwarz für industrielle Präzision.  
-Die Struktur ist modular aufgebaut wie ein Kraftwerks‑Kontrollraum: **Reaktor 1 (Trend), Reaktor 2 (Dual Signal), Reaktor 3 (Korrelation), Reaktor 4 (Effizienz/Heizen)**.
+Die Struktur ist modular aufgebaut wie ein Kraftwerks‑Kontrollraum: **Reaktor 1 (Übersicht), Reaktor 2 (Verbrauch × Temperatur), Reaktor 3 (Korrelation), Reaktor 4 (Effizienz & Heizbedarf)**.
 
 ---
 
 # Design Overview
 
-Das Visualisierungskonzept basiert auf drei Kernideen:
+Das Visualisierungskonzept basiert auf vier Kernideen:
 
-1. **Zeitliche Entwicklung sichtbar machen**  
+1. **Zeitliche Entwicklung sichtbar machen**
    → Langfristige Trends im Stromverbrauch und in der Temperatur.
 
-2. **Saisonale Muster hervorheben**  
+2. **Saisonale Muster hervorheben**
    → Jahreszeitenfilter, farbcodiert nach Winter/Frühling/Sommer/Herbst.
 
-3. **Zusammenhänge explorierbar machen**  
+3. **Zusammenhänge explorierbar machen**
    → Temperatur vs. Verbrauch, Verbrauch pro Kopf, Bevölkerungsentwicklung.
+
+4. **Reale Effizienzverbesserung prüfen**
+   → Witterungsbereinigte Effizienz‑Kennzahl (Verbrauch pro Kopf je Heizbedarf), um den Wettereffekt herauszurechnen.
 
 Während des Designprozesses wurde das Konzept erweitert:
 
 * Einführung eines **Reaktor‑Themas** zur dramaturgischen Strukturierung.  
 * Einbau eines **Kernkraft‑Easter‑Eggs** (KKW‑Box + Reaktor-Auslastung).  
-* Stärkere Betonung der **Interaktivität** (Filter, Hover, Animationen).  
+* Stärkere Betonung der **Interaktivität** (Filter, Hover, klickbare Legenden).
 * Nutzung eines **dunklen Industrie‑UI‑Themas** für klare Kontraste.
 
 Diese Entscheidungen unterstützen die Nutzerbedürfnisse aus der Charta:  
@@ -51,6 +54,8 @@ Diese Entscheidungen unterstützen die Nutzerbedürfnisse aus der Charta:
 | Trendlinie (Reaktor 1) | Datum, Stromverbrauch, Bevölkerung | Linie | x‑Position (Zeit), y‑Position (Verbrauch), Farbe (orange), zweite Achse (Bevölkerung) | Zeitachse, linear |
 | Jahresmittel Verbrauch × Temperatur (Reaktor 2) | Jahr, Stromverbrauch, Temperatur | Linien + Punkte | Farbe (orange/blau), Markergröße, y‑Achsen getrennt | Zeitachse, linear |
 | Scatterplot Temperatur vs. Verbrauch (Reaktor 3) | Temperatur, Verbrauch pro Kopf, Saison | Punkte | Farbe (Saison), Position, Transparenz | linear |
+| Effizienzlinie (Reaktor 4) | Jahr, Stromverbrauch pro Kopf, Heizbedarf | Linie + Punkte + Trendlinie | x‑Position (Jahr), y‑Position (Effizienz‑Kennzahl), Farbe (orange + amber Trend) | linear |
+| Effizienz‑KPIs (Reaktor 4) | Wachstumsphase, Sättigungsphase, Heizbedarf‑Ø | Text + Pille | Farbe (grün = Verbesserung), Typografie | – |
 | Saisonfilter | Saison | Farbe | Farbkanal (Blau/Grün/Gelb/Orange) | kategorisch |
 | Kernkraft‑Box | Erzeugung Kernkraft, Anteil, Durchschnitt | Text + Farbe | Farbe (Ampel), Typografie | – |
 
@@ -70,9 +75,8 @@ Diese Entscheidungen unterstützen die Nutzerbedürfnisse aus der Charta:
   * Orange (#ff8c42) → Energiefluss  
   * Blau (#118ab2) → Temperatur  
   * Jahreszeitenfarben (Winter/Frühling/Sommer/Herbst)  
-* **Linienstärke**: Hervorhebung wichtiger Signale  
-* **Transparenz**: Überlappungen im Scatterplot reduzieren  
-* **Animation**: zeitlicher Aufbau der Trendlinie
+* **Linienstärke**: Hervorhebung wichtiger Signale
+* **Transparenz**: Überlappungen im Scatterplot reduzieren
 
 ### Achsen & Skalen
 * **Zeitachse**: kontinuierlich, Monatsauflösung  
@@ -125,8 +129,8 @@ Das Dashboard folgt einer **modularen Reaktor‑Struktur**:
   * Saison (Mehrfachauswahl)  
 * **Hover‑Details**  
   * Werte, Jahreszahlen, Temperatur  
-* **Animation**  
-  * Trendlinie (Reaktor 1)  
+* **Klickbare Legenden**
+  * Einzelne Datenreihen per Klick ein-/ausblenden
 * **Coordinated Views**  
   * Filter wirken auf alle Reaktoren  
 * **Details‑on‑Demand**  
@@ -137,7 +141,7 @@ Das Dashboard folgt einer **modularen Reaktor‑Struktur**:
 | User Task | Interaktion | Wert |
 |---|---|---|
 | Saisonale Unterschiede erkennen | Saisonfilter | kognitiv |
-| Trends analysieren | animierte Linie | kommunikativ |
+| Trends analysieren | Trendlinie + Phasen-Markierung (Wachstum/Sättigung) | kommunikativ |
 | Temperatur‑Verbrauch‑Zusammenhang | Scatterplot + Hover | kognitiv |
 | Bevölkerungsentwicklung vergleichen | Dual‑Axis‑Chart | kommunikativ |
 | Explorative Analyse | Modulwahl | experiential |
@@ -219,7 +223,8 @@ Das Dashboard folgt einer **modularen Reaktor‑Struktur**:
 
 ### Iterationen
 * Sidebar mehrfach überarbeitet (Scroll‑Bug, Farben)  
-* Trendlinie animiert, um Einstieg zu erleichtern  
+* Trendlinie zunächst animiert (Replay-Button), in späterer Iteration wieder entfernt — die Animation lenkte vom statischen Phasenvergleich (Wachstum/Sättigung) ab
+* Legend-Toggle hinzugefügt für klarere Ansicht
 * KKW‑Box ergänzt als „Easter Egg“ und KPI‑Element  
 * Saisonfarben optimiert für bessere Unterscheidbarkeit
 
@@ -228,20 +233,18 @@ Das Dashboard folgt einer **modularen Reaktor‑Struktur**:
 # Conclusions and Next Steps
 
 ### Zusammenfassung
-Das Dashboard erfüllt die Ziele der Charta:  
-* klare Trends  
-* saisonale Muster  
-* explorative Interaktion  
-* reproduzierbare Datenbasis  
+Das Dashboard erfüllt die Ziele der Charta und beantwortet die Leitfragen:
+
+* Klare zeitliche Trends sichtbar (Wachstumsphase vs. Sättigungsphase)
+* Saisonale Muster über Jahreszeiten-Filter und Farbcodierung erkundbar
+* Quantitative Antwort auf die Effizienz-Hypothese: witterungsbereinigt rund **−8 % Verbrauch pro Kopf je Heizbedarf-Einheit** zwischen Wachstums- und Sättigungsphase
+* Transparenter Umgang mit Datenlücken (Heizbedarf-Regression 1990–1993, Kernkraft-Proxy vor 2000)
 
 ### Offene Punkte
-* Erweiterung um Heizgradtage (Effizienzmodul)  
-* Mobile‑Optimierung  
-* Exportfunktionen (PDF/PNG)  
-* Erweiterte Annotationen
+* Exportfunktionen (PDF/PNG) für einzelne Visualisierungen
+* Vertiefte Evaluation mit Nutzer-Feedback (z. B. Persona-Tests)
 
 ### Nächste Schritte
-* Evaluation durchführen  
-* Feedback integrieren  
-* Finalisierung für Abgabe und Präsentation
+* Präsentation und Abgabe finalisieren
+* Optional: Anpassungen nach Feedback der Bewertung
 

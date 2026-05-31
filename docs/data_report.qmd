@@ -21,7 +21,7 @@ Typischerweise werden in der explorativen Analyse der erfassten Rohdaten Qualit�
 
 | Name | Quelle | Speicherort | Details |
 |------|--------|--------------|---------|
-| **Data_Strom.xlsx** | Zusammengeführte Strom- und Wetterdaten Schweiz | Lokale Projektstruktur `/data` | Stromverbrauch, Stromerzeugung, Temperatur, Bevölkerung, Heizbedarf (teilweise fehlend), Deckungsgrad |
+| **Data_Strom.xlsx** | Zusammengeführte Strom- und Wetterdaten Schweiz | `data_acquisition/Processed_Data/` | Stromverbrauch, Stromerzeugung, Temperatur, Bevölkerung, Heizbedarf (teilweise fehlend), Deckungsgrad |
 | **ogd105_heizgradtage.csv** | Bundesamt für Energie (BFE) – Heizgradtage | Offene Energiedaten BFE | Offizielle Heizgradtage 1994–2025, monatlich, Grundlage für Heizbedarf |
 | **ogd35_schweizerische_elektrizitaetsbilanz_monatswerte.csv** | BFE – Elektrizitätsbilanz | Offene Energiedaten BFE | Detaillierte Erzeugungsdaten (Wasser, Kernkraft, PV, Wind), Importe/Exporte |
 | **climate-data-swissmean_regSwiss_1.4.txt** | MeteoSchweiz – homogenisierte Temperaturreihen | MeteoSchweiz / OGD | Schweizweite Monatsmitteltemperaturen 1864–2026, homogenisiert |
@@ -160,8 +160,8 @@ Die explorative Datenanalyse (EDA) umfasst:
 
 | Name | Quelle | Speicherort |
 |------|--------|--------------|
-| **Data_Strom_korrigiert.xlsx** | Bereinigte und angereicherte Version von Data_Strom.xlsx | /data/processed |
-| **Data_Strom_mit_HGT.xlsx** | Version mit imputierten Heizgradtagen 1990–1993 | /data/processed |
+| **Data_Strom_korrigiert.xlsx** | Bereinigte und angereicherte Version von Data_Strom.xlsx | `data_acquisition/Processed_Data/` |
+| **Data_Strom_mit_HGT.xlsx** | Version mit imputierten Heizgradtagen 1990–1993 | `data_acquisition/Processed_Data/` |
 
 ---
 
@@ -194,8 +194,8 @@ Die Heizgradtage 1990–1993 wurden mithilfe eines **linearen Regressionsmodells
 - Vorbereitung für Visualisierungen (Zeitachsen, Filter, Trends)
 
 ### Datenzugriff
-- Datei liegt im Projekt unter `/data/processed`
-- Wird im Dashboard per `pandas.read_excel()` geladen
+- Datei liegt im Projekt unter `data_acquisition/Processed_Data/`
+- Wird im Dashboard (Streamlit-App in `Dashboard/`) per `pandas.read_excel()` direkt aus dem Processed_Data-Ordner geladen
 
 ### Datenkatalog (Auszug)
 

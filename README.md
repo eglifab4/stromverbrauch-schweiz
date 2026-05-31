@@ -1,4 +1,4 @@
-# Stromverbrauch Schweiz 1990–2025
+# Stromverbrauch Schweiz
 
 Visualisierungsprojekt VDSS (FS26 — Gruppe 4)
 
@@ -119,7 +119,7 @@ uv remove <package>    # Paket entfernen
 ## Dokumentation (Quarto)
 
 Die Projektdokumentation liegt als Quarto-Projekt in `docs/`. Die einzelnen
-`.qmd`-Dateien (Project Charta, Data Report, Viz-Design-Report, Deployment)
+`.qmd`-Dateien (Projektcharta, Data Report, Viz-Design-Report, Deployment)
 ergeben gemeinsam die Doku-Webseite.
 
 Online: <https://vdss-fs26-ds25a.github.io/Visualisation-Projekt-Gruppe-4/>
